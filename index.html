@@ -6,7 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    <script src ="game.js"  > </script>
     <div><h1> Rocks, Paper & Scissors Game</h1></div>
+    <div id="userscore" >Player : 0</div>
+    <div id="compscore" >Computer : 0</div>
+    <div class="options">
+        <button onclick="playRound('rock')" id="rock" value="rock">Rock</button>
+        <button onclick="playRound('paper')"id="paper" value="paper">Paper</button>
+        <button onclick="playRound('scissors')" id="scissors" value="scissors">Scissors</button>
+    </div>
+    <p id="message">Welcome</p>
+    <script src ="game.js"  > </script>
 </body>
 </html>
