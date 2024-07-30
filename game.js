@@ -1,5 +1,11 @@
 
 let options = ["rock", "paper", "scissors"];
+const message = document.getElementById("message");
+let userscoredisplay = document.getElementById("userscore");
+let compscoredisplay = document.getElementById("compscore");
+let userscore = 0;
+let compscore = 0;
+
 /*This is the actual game that will be played*/
 
 function checkWinner(playerselection, computerselection) {
@@ -19,7 +25,7 @@ function checkWinner(playerselection, computerselection) {
             }
     } 
 
-    function getplayerselection() {
+    /*function getplayerselection() {
         let validatedInput = false;
         while(validatedInput == false) {
             const choice = prompt("Rock Paper or Scissors");
@@ -33,71 +39,31 @@ function checkWinner(playerselection, computerselection) {
                 return choiceInLower;
             }
         }
-    }
+    }*/
 
-function playRound(playerselection, computerselection) {
+function playRound(playerselection) {
+    let computerselection = getCompChoice();
     let result = checkWinner(playerselection, computerselection);
     
     if (result == 'draw') {
-        return "It's a draw";
+        message.textContent = "It's a draw";
     }
     else if (result == 'player') {
-        return "player won!" + playerselection + " beats " +  computerselection;
+        userscore++;
+        message.textContent = `You win! ${playerselection} beats ${computerselection}`;
+        userscoredisplay.innerHTML = ("Player : " + userscore);
     }
+
     else {
-        return 'You lose! ' + computerselection + " beats " + playerselection;
+        message.textContent = `You lose! ${computerselection} beats ${playerselection}`;
+        compscore++;
+        compscoredisplay.innerHTML = ("Computer : " + compscore);
     }
 }
 
 function getCompChoice() {
     return ((options[(Math.floor(Math.random() * options.length))]));
-}
-
-function game() {
-    console.log('Welcome!')
-    let userscore = 0;
-    let compscore = 0;
-    for(i = 0;i < 5; i++){
-        const playerselection= getplayerselection();
-        const computerselection = getCompChoice();
-        console.log(playRound(playerselection, computerselection));
-        console.log('------------------')
-        if (checkWinner(playerselection, computerselection)== 'player') {
-            userscore++;
-        }
-        else if(checkWinner(playerselection, computerselection) =='computer') {
-            compscore++;
-        }
-    }
-    console.log('Game Over!');
-    if (userscore > compscore) {
-        console.log('player wins!');
-    }
-    else if (compscore > userscore) {
-        console.log('Computer wins!');
-    }
-    else {
-        console.log('Its a draw!');
-    }
-} 
-
-
-game();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 
 /*
 function getCompChoice() {
